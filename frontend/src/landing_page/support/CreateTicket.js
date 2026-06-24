@@ -15,7 +15,7 @@ function CreateTicket() {
                     <br/>
                     <a href="" style={{textDecoration:"none", lineHeight:"2.5"}}>Company Partnership and HUF Account Opening</a>
                     <br/>
-                    <a href="" >NRI Account Opening</a>
+                    <a href="" style={{textDecoration:"none", lineHeight:"2.5"}} >NRI Account Opening</a>
                     <br/>
                     <a href=""style={{textDecoration:"none", lineHeight:"2.5"}} >Charges at Zerodha</a>
                     <br/>

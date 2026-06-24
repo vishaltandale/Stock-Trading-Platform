@@ -4,7 +4,7 @@ import CreateTicket from './CreateTicket';
 
 function SupportPage() {
     return ( 
-        <div className='container p-5 mb-5'>
+        <div>
             <Hero />
             <CreateTicket />
         </div>
