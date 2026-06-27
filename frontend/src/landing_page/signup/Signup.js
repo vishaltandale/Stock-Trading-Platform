@@ -13,10 +13,10 @@ function Signup() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        'http://localhost:3002/signup',
-        { email, password },
-        { withCredentials: true }
-      );
+  `${process.env.REACT_APP_API_URL}/signup`,
+  { email, password },
+  { withCredentials: true }
+);
       if (data.success) {
         navigate('/login');
       } else {

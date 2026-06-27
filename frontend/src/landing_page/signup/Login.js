@@ -12,12 +12,12 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        'http://localhost:3002/login',
-        { email, password },
-        { withCredentials: true }
-      );
+  `${process.env.REACT_APP_API_URL}/login`,
+  { email, password },
+  { withCredentials: true }
+);
       if (data.success) {
-        window.location.href = 'http://localhost:3001';
+        window.location.href = 'https://zerodha-dashboard-ebon.vercel.app';
       } else {
         setError(data.message);
       }

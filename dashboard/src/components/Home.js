@@ -7,14 +7,16 @@ const Home = () => {
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3002/me", {
-          withCredentials: true,
-        });
-        if (!data.status) {
-          window.location.href = "http://localhost:3000/login";
-        }
+        const { data } = await axios.get(
+  `${process.env.REACT_APP_API_URL}/me`,
+  { withCredentials: true }
+);
+if (!data.status) {
+  window.location.href = 'https://zerodha-clone-nine-xi.vercel.app/login';
+}
+
       } catch (error) {
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = 'https://zerodha-clone-nine-xi.vercel.app/login';
       }
     };
     verifyUser();
