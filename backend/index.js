@@ -4,6 +4,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
+const User = require("./model/UserModel");
+const { createSecretToken, userVerification } = require("./util/auth");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 
@@ -15,7 +19,13 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3001"],
+    credentials: true,
+  })
+);
+app.use(cookieParser());
 app.use(bodyParser.json());
 
 // app.get("/addHoldings", async (req, res) => {
@@ -208,6 +218,64 @@ app.post("/newOrder", async (req, res) => {
   newOrder.save();
 
   res.send("Order saved!");
+});
+
+app.get("/allOrders", async (req, res) => {
+  let allOrders = await OrdersModel.find({});
+  res.json(allOrders);
+});
+
+app.post("/signup", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.json({ message: "All fields are required" });
+    }
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.json({ message: "User already exists" });
+    }
+    const user = await User.create({ email, password });
+    const token = createSecretToken(user._id);
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+    res
+      .status(201)
+      .json({ message: "User signed in successfully", success: true, user });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.json({ message: "All fields are required" });
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.json({ message: "Incorrect password or email" }); 
+    }
+    const auth = await bcrypt.compare(password, user.password);
+    if (!auth) {
+      return res.json({ message: "Incorrect password or email" }); 
+    }
+    const token = createSecretToken(user._id);
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+    res.status(201).json({ message: "User logged in successfully", success: true });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.get("/me", userVerification, (req, res) => {
+  res.json({ status: true, user: req.user.email });
 });
 
 app.listen(PORT, () => {

@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  color: #424242;
 }
 
 code {
@@ -162,6 +164,10 @@ code {
 .order-table tr {
   border-top: 1px solid #f1f1f1;
   border-bottom: 1px solid #f1f1f1;
+  transition: background-color 0.2s ease;
+}
+.order-table tr:hover {
+  background-color: #f9f9f9;
 }
 
 .order-table th {
@@ -392,6 +398,10 @@ hr {
 .order-table tr {
   border-top: 1px solid rgb(211, 211, 211);
   border-bottom: 1px solid rgb(211, 211, 211);
+  transition: background-color 0.2s ease;
+}
+.order-table tr:hover {
+  background-color: #f9f9f9;
 }
 
 .order-table th {
@@ -736,17 +746,25 @@ hr {
 .buy {
   background-color: #4184f3;
   color: #fff;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.8rem;
-  border: 0.7px solid #4184f3;
+  border: none;
+  transition: all 0.2s ease;
+}
+.buy:hover {
+  background-color: #2a6ae0;
 }
 
 .sell {
   background-color: #ff5722;
   color: #fff;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.8rem;
-  border: 0.7px solid #ff5722;
+  border: none;
+  transition: all 0.2s ease;
+}
+.sell:hover {
+  background-color: #e64614;
 }
 
 .action {

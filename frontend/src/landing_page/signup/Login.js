@@ -1,37 +1,36 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Auth.css';
 
-function Signup() {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        'http://localhost:3002/signup',
+        'http://localhost:3002/login',
         { email, password },
         { withCredentials: true }
       );
       if (data.success) {
-        navigate('/login');
+        window.location.href = 'http://localhost:3001';
       } else {
         setError(data.message);
       }
     } catch (err) {
       console.log(err);
-      setError('An error occurred during signup');
+      setError('An error occurred during login');
     }
   };
 
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h2>Signup to Zerodha</h2>
+        <h2>Login to Zerodha</h2>
         <form onSubmit={handleSubmit}>
           {error && <div className="auth-error">{error}</div>}
           <div className="input-group">
@@ -56,14 +55,14 @@ function Signup() {
               required 
             />
           </div>
-          <button type="submit" className="auth-btn">Signup</button>
+          <button type="submit" className="auth-btn">Login</button>
         </form>
         <p className="auth-footer">
-          Already have an account? <Link to="/login">Login here</Link>
+          Don't have an account? <Link to="/signup">Sign up here</Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default Login;
