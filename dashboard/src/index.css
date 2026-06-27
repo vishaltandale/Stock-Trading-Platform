@@ -105,7 +105,7 @@ code {
   justify-content: space-between;
 }
 
-.table .data > * {
+.table .data>* {
   margin-bottom: 5%;
 }
 
@@ -166,6 +166,7 @@ code {
   border-bottom: 1px solid #f1f1f1;
   transition: background-color 0.2s ease;
 }
+
 .order-table tr:hover {
   background-color: #f9f9f9;
 }
@@ -400,6 +401,7 @@ hr {
   border-bottom: 1px solid rgb(211, 211, 211);
   transition: background-color 0.2s ease;
 }
+
 .order-table tr:hover {
   background-color: #f9f9f9;
 }
@@ -418,11 +420,11 @@ hr {
 }
 
 .order-table tr td:first-child p {
-    background: rgb(255, 197, 197);
-    color: rgb(233, 120, 120);
-    width: 50%;
-    text-align: center;
-    border-radius: 2px;
+  background: rgb(255, 197, 197);
+  color: rgb(233, 120, 120);
+  width: 50%;
+  text-align: center;
+  border-radius: 2px;
 }
 
 .order-table tr td:last-child {
@@ -612,8 +614,8 @@ hr {
   justify-content: space-evenly;
 }
 
-.nifty > *,
-.sensex > * {
+.nifty>*,
+.sensex>* {
   margin-right: 8px;
 }
 
@@ -703,7 +705,7 @@ hr {
   align-items: center;
 }
 
-.item-info > * {
+.item-info>* {
   margin-right: 8px;
 }
 
@@ -751,6 +753,7 @@ hr {
   border: none;
   transition: all 0.2s ease;
 }
+
 .buy:hover {
   background-color: #2a6ae0;
 }
@@ -763,6 +766,7 @@ hr {
   border: none;
   transition: all 0.2s ease;
 }
+
 .sell:hover {
   background-color: #e64614;
 }
@@ -830,7 +834,7 @@ hr {
   background-color: #f3f3f3;
 }
 
-.list li:hover > .actions {
+.list li:hover>.actions {
   display: flex;
   cursor: move;
 }
@@ -859,6 +863,3 @@ hr {
 .action:hover {
   background-color: rgb(212, 212, 212);
 }
-
-
-
