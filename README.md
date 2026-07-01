@@ -109,16 +109,3 @@ Stock-Trading-Platform/
 └─ LICENSE
 ```
 
----
-
-## Contributing
-Contributions are welcome! Feel free to open issues or submit pull requests.
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feature/awesome-feature`)
-3. Commit your changes
-4. Push and open a PR
-
----
-
-## License
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
