@@ -1,7 +1,5 @@
 # Stock Trading Platform
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
 A full‑stack **stock trading platform** demo that includes:
 - **Backend** (Node.js + Express) – user authentication, order handling, and MongoDB persistence.
 - **Frontend** (React) – a modern UI for trading, holdings, and positions.
