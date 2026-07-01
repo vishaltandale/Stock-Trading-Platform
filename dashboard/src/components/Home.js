@@ -11,12 +11,14 @@ const Home = () => {
   `${process.env.REACT_APP_API_URL}/me`,
   { withCredentials: true }
 );
+const loginUrl = process.env.REACT_APP_LOGIN_URL || 'https://zerodha-clone-nine-xi.vercel.app/login';
 if (!data.status) {
-  window.location.href = 'https://zerodha-clone-nine-xi.vercel.app/login';
+  window.location.href = loginUrl;
 }
 
       } catch (error) {
-        window.location.href = 'https://zerodha-clone-nine-xi.vercel.app/login';
+        const loginUrl = process.env.REACT_APP_LOGIN_URL || 'https://zerodha-clone-nine-xi.vercel.app/login';
+        window.location.href = loginUrl;
       }
     };
     verifyUser();

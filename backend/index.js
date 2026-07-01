@@ -243,11 +243,15 @@
       if (existingUser) {
         return res.json({ message: "User already exists" });
       }
-      const user = await User.create({ email, password });
+      // Hash the password before storing
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await User.create({ email, password: hashedPassword });
       const token = createSecretToken(user._id);
       res.cookie("token", token, {
         withCredentials: true,
         httpOnly: false,
+        sameSite: "none",
+        secure: true,
       });
       res
         .status(201)
@@ -275,6 +279,8 @@
       res.cookie("token", token, {
         withCredentials: true,
         httpOnly: false,
+        sameSite: "none",
+        secure: true,
       });
       res.status(201).json({ message: "User logged in successfully", success: true });
     } catch (error) {

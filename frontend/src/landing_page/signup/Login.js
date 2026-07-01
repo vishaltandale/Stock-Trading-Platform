@@ -17,7 +17,8 @@ function Login() {
         { withCredentials: true },
       );
       if (data.success) {
-        window.location.href = "https://zerodha-dashboard-ebon.vercel.app";
+        const dashboardUrl = process.env.REACT_APP_DASHBOARD_URL || `${window.location.origin.replace('3000', '3001')}`;
+        window.location.href = dashboardUrl;
       } else {
         setError(data.message);
       }
